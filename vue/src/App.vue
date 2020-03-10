@@ -16,6 +16,7 @@
 import SideBar from './components/SideBar';
 import Header from './components/Header';
 import Body from './components/Body';
+
 export default{
   name: 'App',
   components: {
@@ -23,6 +24,26 @@ export default{
     Header: Header,
     Body: Body
   },
+
+  data(){  //TODO - need to retrieve from database
+    return {
+      items: [],
+      selectedItem: null
+    };
+  },
+
+  methods:{  //TODO - get from Flask and return it
+    getInfo(/*item*/){
+      this.$http.get('http://127.0.0.1:5000/item/Python').then(function(data){
+        console.log(data);
+      });
+    //  this.items =
+      //this.selectedItem = item;
+      //const {name} = this.url;
+      //axios.get(`http://127.0.0.1:5000/item/${name}`);
+  }
+
+  }
 };
 </script>
 

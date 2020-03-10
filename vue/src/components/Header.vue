@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<style scoped>
+div {
+  padding: 7px;
+  width: 20%  /* want to be dynamic with the text (text + 5%) */
+}
+</style>
+
 <script>
 export default{
   name: 'Header',
@@ -11,11 +18,3 @@ export default{
   }
 };
 </script>
-
-
-<style scoped>
-div {
-  padding: 7px;
-  width: 20%  /* want to be dynamic with the text (text + 5%) */
-}
-</style>

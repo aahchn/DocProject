@@ -12,19 +12,19 @@
 
 <script>
 // TODO
-import axios from 'axios'
+//import axios from 'axios'
 export default{
+  name: 'Header',
   data(){
-
-  }
-},
-computed:{
-  getNameFromDatabase(){
+ },
+ computed:{
+  /*getName(){  //Getting name from Database and outputting into the sidebar
     const path = `http://127.0.0.1:5000/item` //TODO: talking to backend (flask)
     axios.get(path)
     .then(response => {
 
     })
-  }
+  } */
+ }
 }
 </script>
