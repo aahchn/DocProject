@@ -1,6 +1,6 @@
 <template>
   <div class="w3-container w3-dark-grey">
-      <h1>Placeholder</h1> <!-- need to grab from database dynamically -->
+      <h1> {{title}} </h1> <!-- need to grab from database dynamically  {{title}} -->
   </div>
 </template>
 
@@ -13,8 +13,16 @@ div {
 
 <script>
 export default{
-  name: 'Header',
-  methods:{
-  }
+  props:{
+    title:{
+      type: String,
+      required: true
+    }
+  },
+  data(){
+    return{
+
+    }
+  },
 };
 </script>

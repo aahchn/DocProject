@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <SideBar></SideBar>
-     <div class="SideBarAndBody">
+     <div class="HeaderAndBody">
         <Header></Header>
         <br>
         <Body></Body>
@@ -13,12 +13,13 @@
 
 
 <script>
+import axios from 'axios'
 import SideBar from './components/SideBar';
 import Header from './components/Header';
 import Body from './components/Body';
 
 export default{
-  name: 'App',
+  //name: 'App',
   components: {
     SideBar: SideBar,
     Header: Header,
@@ -28,29 +29,27 @@ export default{
   data(){  //TODO - need to retrieve from database
     return {
       items: [],
-      selectedItem: null
-    };
+      selectedItem: null //What title would be initially
+    }
   },
 
   methods:{  //TODO - get from Flask and return it
-    getInfo(/*item*/){
-      this.$http.get('http://127.0.0.1:5000/item/Python').then(function(data){
-        console.log(data);
-      });
-    //  this.items =
-      //this.selectedItem = item;
-      //const {name} = this.url;
-      //axios.get(`http://127.0.0.1:5000/item/${name}`);
+    getDocumentations(){
+      axios.get(`http://127.0.0.1:5000/items/`)
+        .then(response => {this.items = response.data.items});
+    }
+  },
+  mounted(){
+    this.getDocumentations();
+    return this.items;
   }
-
-  }
-};
+}
 </script>
 
 
 
 <style scoped>
-.SideBarAndBody {
+.HeaderAndBody {
   margin-left: 15%;
 }
 </style>

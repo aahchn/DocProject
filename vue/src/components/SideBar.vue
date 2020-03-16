@@ -12,7 +12,7 @@
 
 <script>
 // TODO
-//import axios from 'axios'
+
 export default{
   name: 'Header',
   data(){
