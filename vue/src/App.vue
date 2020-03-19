@@ -35,7 +35,7 @@ export default{
 
   methods:{  //TODO - get from Flask and return it
     getDocumentations(){
-      axios.get(`http://127.0.0.1:5000/items/`)
+      axios.get('http://127.0.0.1:5000/items/')
         .then(response => {this.items = response.data.items});
     }
   },
