@@ -4,9 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <SideBar></SideBar>
      <div class="HeaderAndBody">
-        <Header></Header>
+        <Header v-bind:title="title"></Header>
         <br>
-        <Body></Body>
+        <Body v-bind:items="items"></Body>
       </div>
  </div>
 </template>
@@ -28,15 +28,18 @@ export default{
 
   data(){  //TODO - need to retrieve from database
     return {
-      items: [],
-      selectedItem: null //What title would be initially
+      items: [], //talks with <Body v-bind>
+      title: 'Items',
+      selectedItem: null, //What title would be initially,
     }
   },
 
   methods:{  //TODO - get from Flask and return it
     getDocumentations(){
-      axios.get('http://127.0.0.1:5000/items/')
+      const path = `http://localhost:5000/item/test`;
+      axios.get(path)
         .then(response => {this.items = response.data.items});
+      //const name = items.map(item => item.name );
     }
   },
   mounted(){

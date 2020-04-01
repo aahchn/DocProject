@@ -10,7 +10,14 @@
 <script>
 export default{
   name: 'Body',
+  props: {
+    items:{
+      type: String,
+      required: true
+    }
+  }, //TODO
   methods:{
+
   }
 };
 </script>

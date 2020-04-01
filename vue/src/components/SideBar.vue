@@ -14,17 +14,17 @@
 // TODO
 
 export default{
-  name: 'Header',
+  name: 'SideBar',
   data(){
- },
- computed:{
-  /*getName(){  //Getting name from Database and outputting into the sidebar
-    const path = `http://127.0.0.1:5000/item` //TODO: talking to backend (flask)
-    axios.get(path)
-    .then(response => {
+  },
+  props: {
+    items:{
+      type: String,
+    //required: true
+    }
+  }, //TODO
+  methods:{
 
-    })
-  } */
- }
-}
+  }
+ };
 </script>
