@@ -1,4 +1,4 @@
-from flask_restful import Resource, reqparse
+'''from flask_restful import Resource, reqparse
 from models.user import UserModel
 
 
@@ -24,4 +24,4 @@ class UserRegister(Resource):
         user = UserModel(data['username'], data['password']) #can also do UserModel(**data)
         user.save_to_db()
 
-        return {"message": "User created successfully."}, 201
+        return {"message": "User created successfully."}, 201 '''

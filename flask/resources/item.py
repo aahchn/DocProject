@@ -16,7 +16,7 @@ class Item(Resource):
                         help="Every item needs a store_id."
                         )
 
-    @jwt_required()
+    #@jwt_required() - do not need authentication yet
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
@@ -64,4 +64,3 @@ class ItemList(Resource):
     def get(self):
         return {'items': list(map(lambda x: x.json(), ItemModel.query.all()))}
         #same as return {'items': [item.json() for item in ItemModel.query.all()]}
-        
