@@ -19,10 +19,11 @@ export default{
       //required: true
     }
   },
-  data(){
-    return{
-
-    }
+  data(){ //TODO
+    return{}
+  },
+  computed: { //TODO
   }
+
 };
 </script>

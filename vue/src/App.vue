@@ -31,40 +31,28 @@ export default{
       items: [], //talks with <Body v-bind>
       title: 'Items',
       selectedItem: null, //What title would be initially,
-      access_token: `` //TODO
     }
   },
 
   methods:{  //TODO - get from Flask and return it
-    //need to get AUTH access token first
-    authentication(){
-      const path = `http://localhost:5000/auth`;
-      axios.post(path, {
-         access_token: 'Finn',  //TODO
-         //lastName: 'Williams'
-       })
-      .then((response) => {console.log(response);
-      },(error) => {console.log(error);
-      });
+    getItems(){
+      axios.get("http://localhost:5000/items")
+        .then(response => {
+          this.list = response.data;
+          console.log(this.list.items[0]);
+      })
     },
-
-    /* authentication(){
-      const path = `http://localhost:5000/auth`;
-      axios.post(path) //TODO change the response => bc it is a POST method not a GET
-       .then(response => {this.access_token = response.data.access_token});
-    }, */
-
-    getDocumentations(/* access token */){ //TODO
-      const path = `http://localhost:5000/item/test`;
-      axios.get(path)
-        .then(response => {this.items = response.data.items});
-      //const name = items.map(item => item.name );
+    getDocumentations(){
+      axios.get("http://localhost:5000/item/test")
+        .then(response => {
+          this.name = response.data.name;
+          console.log(this.name);
+        })
     }
   },
   mounted(){
-    this.authentication();
-    this.getDocumentations(this.access_token);
-    return this.items;
+    this.getItems();
+    this.getDocumentations();
   }
 }
 </script>

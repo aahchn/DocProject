@@ -12,11 +12,11 @@ export default{
   name: 'Body',
   props: {
     items:{
-      type: String,
+      type: Array, //Should be a string --> need to isolate the String
       required: true
     }
-  }, //TODO
-  methods:{
+  },
+  computed: { //TODO 
 
   }
 };

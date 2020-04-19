@@ -19,11 +19,11 @@ export default{
   },
   props: {
     items:{
-      type: String,
+      type: Array,
     //required: true
     }
-  }, //TODO
-  methods:{
+  },
+  computed: { //TODO
 
   }
  };
