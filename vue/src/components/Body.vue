@@ -16,8 +16,8 @@ export default{
       required: true
     }
   },
-  computed: { //TODO 
-
+  computed: { //TODO - turns data into viewable stuff
+    
   }
 };
 </script>

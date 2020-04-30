@@ -2,11 +2,13 @@
  <div>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <SideBar></SideBar>
+    <SideBar :articleItems="articleItems" />
      <div class="HeaderAndBody">
-        <Header v-bind:title="title"></Header>
+        <Header :articleItems="articleItems" @titleChanged="articleItems=$event"></Header> <!-- Header calls the getItemName function -->
         <br>
-        <Body v-bind:items="items"></Body>
+        <p>{{articleItems}}</p>
+        <br>
+        <Body v-bind:items="articleItems"></Body>
       </div>
  </div>
 </template>
@@ -26,33 +28,34 @@ export default{
     Body: Body
   },
 
-  data(){  //TODO - need to retrieve from database
-    return {
-      items: [], //talks with <Body v-bind>
-      title: 'Items',
-      selectedItem: null, //What title would be initially,
-    }
+  data(){  //TODO - need to retrive this.list
+    return { articleItems:[], selectedItem: null };
   },
 
-  methods:{  //TODO - get from Flask and return it
-    getItems(){
+  methods:{  //TODO - need to actually
+    getItemList(){
       axios.get("http://localhost:5000/items")
         .then(response => {
-          this.list = response.data;
-          console.log(this.list.items[0]);
+          this.articleItems = response.data.items;
+          console.log(this.articleItems);
+          for (var i = 0; i < this.articleItems.length; ++i){
+            console.log(this.articleItems[i].name); //returns 'test'
+            console.log(this.articleItems[i].price); //returns 15.99
+            //Can also do params to get just the name or price
+          }
       })
     },
-    getDocumentations(){
-      axios.get("http://localhost:5000/item/test")
+    getItemName(){
+      axios.get("http://localhost:5000/item/JavaScript")
         .then(response => {
           this.name = response.data.name;
-          console.log(this.name);
+          console.log(this.name + " - hello i am here"); //returns 'JavaScript'
         })
     }
   },
   mounted(){
-    this.getItems();
-    this.getDocumentations();
+    this.getItemList();
+    this.getItemName();
   }
 }
 </script>
