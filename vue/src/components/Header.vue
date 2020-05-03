@@ -1,8 +1,7 @@
 <template>
   <div class="w3-container w3-dark-grey">
-      <h1 :value="articleItem" @input="updateTitle"> <!-- need to output articleItem[i].name when i is selected -->
-        Output: {{title}}<br>
-        {{articleItem}}
+      <h1> <!-- need to output articleItem[i].name when i is selected -->
+        Output: {{updatedTitle}}<br>
       </h1>
   </div>
 </template>
@@ -16,17 +15,9 @@ div {
 
 <script>
 export default{
-  props: ['articleItems'],
-  data(){
-    return{
-      title: '' //TODO needs to be array instead of String
-    }
-  },
+  props: ['updatedTitle'],
   methods:{
-    updateTitle(event){
-      this.title = event.target.value;
-      this.$emit('titleChanged', this.title);
-    }
+
   }
-};
+}
 </script>

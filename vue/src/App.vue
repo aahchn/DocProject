@@ -2,9 +2,10 @@
  <div>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <SideBar :articleItems="articleItems" />
+    <SideBar :articleItems="articleItems" @emitInfo="updateTitle($event)"/> <!-- TODO, MOVE THIS TO HEADER VIA PROP -->
+
      <div class="HeaderAndBody">
-        <Header :articleItems="articleItems" @titleChanged="articleItems=$event"></Header> <!-- Header calls the getItemName function -->
+        <Header :updatedTitle="selectedTitle"/> <!-- Header calls the getItemName function -->
         <br>
         <p>{{articleItems}}</p>
         <br>
@@ -15,7 +16,7 @@
 
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 import SideBar from './components/SideBar';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -28,11 +29,15 @@ export default{
     Body: Body
   },
 
-  data(){  //TODO - need to retrive this.list
-    return { articleItems:[], selectedItem: null };
+  data(){
+    return { articleItems:[], selectedTitle: null };
   },
 
-  methods:{  //TODO - need to actually
+  methods:{
+    updateTitle(updatedTitle){  //TODO
+      this.selectedTitle = updatedTitle;
+      console.log(this.selectedTitle);
+    },
     getItemList(){
       axios.get("http://localhost:5000/items")
         .then(response => {
@@ -51,7 +56,7 @@ export default{
           this.name = response.data.name;
           console.log(this.name + " - hello i am here"); //returns 'JavaScript'
         })
-    }
+    },
   },
   mounted(){
     this.getItemList();
