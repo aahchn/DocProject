@@ -16,8 +16,5 @@ div {
 <script>
 export default{
   props: ['updatedTitle'],
-  methods:{
-
-  }
 }
 </script>

@@ -2,14 +2,14 @@
  <div>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <SideBar :articleItems="articleItems" @emitInfo="updateTitle($event)"/> <!-- TODO, MOVE THIS TO HEADER VIA PROP -->
+    <SideBar :articleItems="articleItems" @emitTitle="updateTitle($event)" @emitInfo="updateInfo($event)"/> <!-- TODO, MOVE THIS TO HEADER VIA PROP -->
 
      <div class="HeaderAndBody">
         <Header :updatedTitle="selectedTitle"/> <!-- Header calls the getItemName function -->
         <br>
-        <p>{{articleItems}}</p>
+        {{articleItems}}
         <br>
-        <Body v-bind:items="articleItems"></Body>
+        <Body :updatedInfo="selectedInfo"/>
       </div>
  </div>
 </template>
@@ -30,13 +30,17 @@ export default{
   },
 
   data(){
-    return { articleItems:[], selectedTitle: null };
+    return { articleItems:[], selectedTitle: null, selectedInfo: null };
   },
 
   methods:{
     updateTitle(updatedTitle){  //TODO
       this.selectedTitle = updatedTitle;
       console.log(this.selectedTitle);
+    },
+    updateInfo(updatedInfo){
+      this.selectedInfo = updatedInfo;
+      console.log(this.selectedInfo);
     },
     getItemList(){
       axios.get("http://localhost:5000/items")
@@ -50,17 +54,17 @@ export default{
           }
       })
     },
-    getItemName(){
+    /* getItemName(){
       axios.get("http://localhost:5000/item/JavaScript")
         .then(response => {
           this.name = response.data.name;
           console.log(this.name + " - hello i am here"); //returns 'JavaScript'
         })
-    },
+    }, */
   },
   mounted(){
     this.getItemList();
-    this.getItemName();
+    //this.getItemName();
   }
 }
 </script>
