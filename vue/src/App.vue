@@ -7,8 +7,6 @@
      <div class="HeaderAndBody">
         <Header :updatedTitle="selectedTitle"/> <!-- Header calls the getItemName function -->
         <br>
-        {{articleItems}}
-        <br>
         <Body :updatedInfo="selectedInfo"/>
       </div>
  </div>
