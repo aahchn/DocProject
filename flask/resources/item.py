@@ -5,8 +5,8 @@ from models.item import ItemModel
 
 class Item(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument('price',
-                        type=float,
+    parser.add_argument('info',
+                        type=str,
                         required=True,
                         help="This field cannot be left blank!"
                         )
@@ -51,7 +51,7 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
 
         if item:
-            item.price = data['price']
+            item.info = data['info']  #TODO - change info to body
         else:
             item = ItemModel(name, **data)
 

@@ -9,7 +9,7 @@ class StoreModel(db.Model):
 
     items = db.relationship('ItemModel', lazy='dynamic') # lazy --> create a new object for each item until the end (save resources)
 
-    #name, price and store_id will be passed into here from tablename above
+    #name, info and store_id will be passed into here from tablename above
     def __init__(self, name):
         self.name = name
 
