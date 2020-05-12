@@ -10,10 +10,10 @@ class Item(Resource):
                         required=True,
                         help="This field cannot be left blank!"
                         )
-    parser.add_argument('store_id',
+    parser.add_argument('category_id',
                         type=int,
                         required=True,
-                        help="Every item needs a store_id."
+                        help="Every item needs a category_id."
                         )
 
     #@jwt_required() - do not need authentication yet

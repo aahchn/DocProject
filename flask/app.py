@@ -7,7 +7,7 @@ from db import db
 #from security import authenticate, identity
 #from resources.user import UserRegister
 from resources.item import Item, ItemList
-from resources.store import Store, StoreList
+from resources.category import category, categoryList
 
 app = Flask(__name__)
 CORS(app)  #allows other ports to connect to it
@@ -18,7 +18,7 @@ app.secret_key = 'jose'
 api = Api(app)
 
 
-#only creates table that it sees (import Store, StoreList) -> talks to resource -> model (column def of db)
+#only creates table that it sees (import category, categoryList) -> talks to resource -> model (column def of db)
 @app.before_first_request
 def create_tables():
     db.create_all() #creates sqlite:///data.db before first request
@@ -26,8 +26,8 @@ def create_tables():
 
 #jwt = JWT(app, authenticate, identity)  # /auth
 
-api.add_resource(Store, '/store/<string:name>')
-api.add_resource(StoreList, '/stores')
+api.add_resource(category, '/category/<string:name>')
+api.add_resource(categoryList, '/categorys')
 api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items')
 '''api.add_resource(UserRegister, '/register')'''

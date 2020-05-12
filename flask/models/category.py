@@ -1,7 +1,7 @@
 from db import db
 
-class StoreModel(db.Model):
-    __tablename__ = 'stores'
+class categoryModel(db.Model):
+    __tablename__ = 'categorys'
 
      # model will these 2 columns - tells SQLAlchemy how to read these tables
     id = db.Column(db.Integer, primary_key=True)
@@ -9,7 +9,7 @@ class StoreModel(db.Model):
 
     items = db.relationship('ItemModel', lazy='dynamic') # lazy --> create a new object for each item until the end (save resources)
 
-    #name, info and store_id will be passed into here from tablename above
+    #name, info and category_id will be passed into here from tablename above
     def __init__(self, name):
         self.name = name
 

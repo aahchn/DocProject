@@ -8,14 +8,14 @@ class ItemModel(db.Model):
     name = db.Column(db.String(80))
     info = db.Column(db.String(1000))
 
-    store_id = db.Column(db.Integer, db.ForeignKey('stores.id')) # TODO - change to category
-    store = db.relationship('StoreModel')  # TODO - change to category
+    category_id = db.Column(db.Integer, db.ForeignKey('categorys.id')) # TODO - change to category
+    category = db.relationship('categoryModel')  # TODO - change to category
 
-    #name, info and store_id will be passed into here from tablename above
-    def __init__(self, name, info, store_id):
+    #name, info and category_id will be passed into here from tablename above
+    def __init__(self, name, info, category_id):
         self.name = name
         self.info = info  # TODO - change to info
-        self.store_id = store_id # TODO - change to body
+        self.category_id = category_id # TODO - change to category
 
     def json(self):  #TODO
         return {'name': self.name, 'info': self.info} #TODO - change info to body
