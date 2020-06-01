@@ -34,11 +34,11 @@ export default{
   methods:{
     updateTitle(updatedTitle){  //TODO
       this.selectedTitle = updatedTitle;
-      console.log(this.selectedTitle);
+      //console.log(this.selectedTitle + " here is TITLE");
     },
     updateInfo(updatedInfo){
       this.selectedInfo = updatedInfo;
-      console.log(this.selectedInfo);
+      //console.log(this.selectedInfo + " here is the updated info");
     },
     getItemList(){
       axios.get("http://localhost:5000/items")
@@ -46,8 +46,8 @@ export default{
           this.articleItems = response.data.items;
           console.log(this.articleItems);
           for (var i = 0; i < this.articleItems.length; ++i){
-            console.log(this.articleItems[i].name); //returns 'test'
-            console.log(this.articleItems[i].price); //returns 15.99
+            //console.log(this.articleItems[i].name); //returns 'test'
+            //console.log(this.articleItems[i].price); //returns 15.99
             //Can also do params to get just the name or price
           }
       })

@@ -1,7 +1,7 @@
 <template>
   <div class="w3-container w3-dark-grey">
       <h1> <!-- need to output articleItem[i].name when i is selected -->
-        Output: {{updatedTitle}}<br>
+        Title: {{updatedTitle}}<br>
       </h1>
   </div>
 </template>
