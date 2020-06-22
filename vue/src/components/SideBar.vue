@@ -23,9 +23,8 @@ export default{
       this.$emit('emitTitle', this.articleItems[index].name);
       //this.$emit('emitInfo', 'THIS IS A TEST');
     },
-
     emitInfo(index){
-      this.$emit('emitInfo', this.articleItems[index].info); //TODO - change price to info in FLASK
+      this.$emit('emitInfo', this.articleItems[index].info);
     }
   }
 }

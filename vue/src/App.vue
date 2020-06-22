@@ -28,7 +28,10 @@ export default{
   },
 
   data(){
-    return { articleItems:[], selectedTitle: null, selectedInfo: null };
+    return {
+      articleItems:[], 
+      selectedTitle: null,
+      selectedInfo: null };
   },
 
   methods:{
@@ -45,7 +48,7 @@ export default{
         .then(response => {
           this.articleItems = response.data.items;
           console.log(this.articleItems);
-          for (var i = 0; i < this.articleItems.length; ++i){
+         //  for (var i = 0; i < this.articleItems.length; ++i){
             //console.log(this.articleItems[i].name); //returns 'test'
             //console.log(this.articleItems[i].price); //returns 15.99
             //Can also do params to get just the name or price
